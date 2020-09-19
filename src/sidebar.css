@@ -1,0 +1,22 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    flex: 0.35;
+    border: 1px solid rgb(228, 224, 224);
+}
+
+.sidebar_header{
+    height: 10vh;
+    border: 1px solid rgb(201, 42, 42);
+
+}
+
+.sidebar_search{
+    height: 7vh;
+    border: 1px solid rgb(26, 26, 109);
+}
+
+.contactsList{
+    height: 63vh;
+    border: 1px solid rgb(37, 138, 16);
+}
