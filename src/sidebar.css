@@ -7,16 +7,21 @@
 
 .sidebar_header{
     height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(153, 156, 156);
     border: 1px solid rgb(201, 42, 42);
 
 }
 
 .sidebar_search{
     height: 7vh;
-    border: 1px solid rgb(26, 26, 109);
+    background-color: rgb(189, 172, 172);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .contactsList{
     height: 63vh;
+    background-color: rgb(255, 255, 255);
     border: 1px solid rgb(37, 138, 16);
 }

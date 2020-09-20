@@ -1,17 +1,32 @@
 import React from 'react'
 import "./chats.css"
 
+import Avatar from '@material-ui/core/Avatar';
+
+import ChatIcon from '@material-ui/icons/Chat';
+import SearchIcon from '@material-ui/icons/Search';
+import AttachFileIcon from '@material-ui/icons/AttachFile';
+
+import MicIcon from '@material-ui/icons/Mic';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+
+
+
 function Chats() {
     return (
         <div className="chats">
             <div className="chats_header">
-                <h3>This is chats header</h3>
+            <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
+                <SearchIcon/>
+                <AttachFileIcon/>
+                <ChatIcon/>
             </div>
             <div className="mainChat">
-                <h3>Here will be main chat content!</h3>
+                <h3>Main Chat Content!</h3>
             </div>
             <div className="chatSend">
-                <h3>From here one can type messeges and send them!</h3>
+                <MicIcon/>
+                <SentimentVerySatisfiedIcon/>
             </div>
         </div>
     )

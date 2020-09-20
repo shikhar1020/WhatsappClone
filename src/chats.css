@@ -7,15 +7,20 @@
 
 .chats_header{
     height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(190, 178, 178);
     border: 1px solid rgb(124, 14, 75);
 }
 
 .mainChat{
     height: 60vh;
+    background-color: rgb(204, 212, 173);
     border: 1px solid rgb(202, 199, 10);
 }
 
 .chatSend{
     height: 10vh;
+    background-color: rgba(219, 205, 205, 0.644);
     border: 1px solid rgb(184, 104, 14);
 }
