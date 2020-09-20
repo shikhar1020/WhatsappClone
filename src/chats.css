@@ -2,25 +2,61 @@
     display: flex;
     flex-direction: column;
     flex:0.65;
-    border: 1px solid rgb(228, 224, 224);
+    /*border: 1px solid rgb(228, 224, 224);*/
 }
 
 .chats_header{
     height: 10vh;
     display: flex;
     align-items: center;
-    background-color: rgb(190, 178, 178);
-    border: 1px solid rgb(124, 14, 75);
+    justify-content: space-between;
+    background-color: rgb(190, 12, 146);
+    /*border: 1px solid rgb(124, 14, 75);*/
+}
+
+.chats_header > .MuiAvatar-root{
+    margin-left: 20px;
+
+}
+
+.chats_headerRight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 10vw;
+    margin-right: 10px;
 }
 
 .mainChat{
     height: 60vh;
-    background-color: rgb(204, 212, 173);
-    border: 1px solid rgb(202, 199, 10);
+    background-color: white;
+    /*border: 1px solid rgb(202, 199, 10);*/
 }
 
 .chatSend{
+    display: flex;
     height: 10vh;
-    background-color: rgba(219, 205, 205, 0.644);
-    border: 1px solid rgb(184, 104, 14);
+    align-items: center;
+    background-color: rgba(42, 13, 170, 0.644);
+    /*border: 1px solid rgb(184, 104, 14);*/
+}
+
+.chatSend_messageContainer{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    width:100%;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.chatSend_messageContainer > input{
+    border: none;
+    margin-left: 10px;
+    outline-width: 0;
+}
+
+.chatSend_messageContainer > .MuiSvgIcon-root{
+    padding: 10px;
+    margin:0;
 }

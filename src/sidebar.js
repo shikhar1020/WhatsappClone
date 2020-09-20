@@ -2,7 +2,7 @@ import React from 'react'
 import "./sidebar.css"
 import IndivudialContacts from "./indivudialContacts"
 
-import {Avatar, IconButton, Button} from '@material-ui/core';
+import {Avatar, IconButton } from '@material-ui/core';
 
 import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -31,7 +31,7 @@ function Sidebar() {
             <div className="sidebar_search">
                 <div className="sidebar_searchContainer">
                     <SearchIcon/>
-                    <input placeholder="Search or Start new Chat" type="text"/>
+                    <input placeholder="Search or Start new Chat" type="text" size="35"/>
                 </div>
             </div>
 
