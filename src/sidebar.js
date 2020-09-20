@@ -1,11 +1,12 @@
 import React from 'react'
 import "./sidebar.css"
+import IndivudialContacts from "./indivudialContacts"
 
-import Avatar from '@material-ui/core/Avatar';
+import {Avatar, IconButton, Button} from '@material-ui/core';
 
 import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -14,24 +15,34 @@ function Sidebar() {
         <div className="sidebar">
             <div className="sidebar_header">
                 <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
-                < RadioButtonUncheckedIcon />
-                <ChatIcon/>
-                <MoreVertIcon />
+                <div className="sidebar_headerRight">
+                    <IconButton>
+                        <DonutLargeIcon />
+                    </IconButton>
+                    <IconButton>
+                        <ChatIcon/>
+                    </IconButton>
+                    <IconButton>
+                        <MoreVertIcon />
+                    </IconButton>
+                </div>                
             </div>
+
             <div className="sidebar_search">
-                < SearchIcon />
+                <div className="sidebar_searchContainer">
+                    <SearchIcon/>
+                    <input placeholder="Search or Start new Chat" type="text"/>
+                </div>
             </div>
+
             <div className="contactsList">
-            <h3>Add new Chat</h3>
-            <hr/>
-            <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
-            <hr/>
-            <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
-            <hr/>
-            <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
-            <hr/>
-            <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
-            <hr/>
+                <IndivudialContacts />
+                <IndivudialContacts />
+                <IndivudialContacts />
+                <IndivudialContacts />
+                <IndivudialContacts />
+                <IndivudialContacts />
+                <IndivudialContacts />
             </div>
             
         </div>
