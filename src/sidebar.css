@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     flex: 0.35;
-    border: 1px solid rgb(228, 224, 224);
+    /*border: 1px solid rgb(228, 224, 224);*/
 }
 
 .sidebar_header{
@@ -12,12 +12,14 @@
     justify-content: space-between;
     /*padding: 20px;*/
     border-right: 1px solid lightgrey;
+    background-image: url("https://i.pinimg.com/originals/8c/6b/e2/8c6be22eead703b09eb6145008b7d504.jpg");
     background-color: rgb(34, 206, 206);
     /*border: 1px solid rgb(201, 42, 42);*/
 }
 
 .sidebar_header > .MuiAvatar-root{
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .sidebar_headerRight{
@@ -40,7 +42,7 @@
     align-items:center;
     padding:10px;
     height: 39px;
-    background-color: rgb(224, 152, 18);
+    background-color: rgb(40, 170, 164);
     /*border: 1px solid rgb(255, 255, 255);*/
 }
 
@@ -69,7 +71,7 @@
     flex: 1;
     height: 63vh;
     background-color: white;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT5ZfavDGRDmWtnTok6Pdg4hs1JDTV_gMk6Iw&usqp=CAU");
     overflow: auto;
-    /*border: 1px solid rgb(37, 138, 16);*/
-        
+    /*border: 1px solid rgb(37, 138, 16);*/        
 }
