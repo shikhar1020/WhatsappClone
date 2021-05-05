@@ -37,7 +37,7 @@ function Chats({ messages }) {
             <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
                 <div className="chatHeader_info">
                     <h3>Shikhar Sangam</h3>
-                    <p>last seen at 19:00</p>
+                    <p>last seen at 19:30</p>
                 </div>
                 <div className="chats_headerRight">
                     <IconButton>
