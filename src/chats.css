@@ -116,6 +116,8 @@
     border: none;
     margin-left: 10px;
     outline-width: 0;
+    /* padding: 10px; */
+    /* flex: 1; */
 }
 
 .chatSend_messageContainer > button {

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+import axios from "./axios";
 import "./chats.css"
 
 import {Avatar, IconButton} from '@material-ui/core';
@@ -14,6 +15,22 @@ import SendIcon from '@material-ui/icons/Send';
 
 
 function Chats({ messages }) {
+
+    const [input, setInput] = useState("");
+    const sendMessage = async(e) => {
+        e.preventDefault();
+
+        await axios.post("/messages/new",  {
+            "message" : input,
+            "name" : "Shikhar Sangam",
+            "timestamp" : "Just Now",
+            "received" : false
+        });
+
+        setInput("");
+    };
+
+
     return (
         <div className="chats">
             <div className="chats_header">
@@ -120,14 +137,21 @@ function Chats({ messages }) {
                     <SentimentVerySatisfiedIcon/>
                 </IconButton>                                
                     <div className="chatSend_messageContainer">
-                        <input placeholder="Type a message" type="text" size="70"/>
-                        {/*<button type="submit">Send</button>*/}
+                        {/* <form> */}
+                            <input 
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)} 
+                                placeholder="Type a message" 
+                                type="text" 
+                                size="70"/>
+                            {/* <button onClick={sendMessage} type="submit">Send</button> */}
+                        {/* </form> */}
                         <IconButton>
                             <AttachFileIcon/>
                         </IconButton>      
                     </div>
                     <IconButton>
-                        <SendIcon type="submit"/>
+                        <SendIcon onClick={sendMessage}/>
                     </IconButton>
                     <IconButton>
                         <MicIcon/>
