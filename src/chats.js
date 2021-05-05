@@ -13,7 +13,7 @@ import SendIcon from '@material-ui/icons/Send';
 
 
 
-function Chats() {
+function Chats({ messages }) {
     return (
         <div className="chats">
             <div className="chats_header">
@@ -36,13 +36,17 @@ function Chats() {
             </div>
 
             <div className="mainChat">
-                <p className="mainChat_sentmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
+                {messages.map((message) => (
+                    <p className={`mainChat_sentmessage ${message.received && "mainChat_receivedmessage"}`}>
+                        <span className="chat_name">{message.name}</span>
+                        {message.message}
+                        <span className="chat_timestamp">{message.timestamp}</span>            
+                    </p>
+                ))}
 
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
+                
+
+                {/* <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
@@ -106,7 +110,7 @@ function Chats() {
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
+                </p> */}
 
             </div>
 

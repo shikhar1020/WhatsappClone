@@ -26,10 +26,10 @@ function App() {
     });
 
     const channel = pusher.subscribe('messages');
-    // channel.bind('inserted', (newMessage)  => {
-    //   alert(JSON.stringify(newMessage));
-    //   setMessages([...messages, newMessage]);
-    // });
+    channel.bind('inserted', (newMessage)  => {
+      // alert(JSON.stringify(newMessage));
+      setMessages([...messages, newMessage]);
+    });
 
     return () => {
       channel.unbind_all();
@@ -44,7 +44,7 @@ function App() {
     <div className="app">
       <div className="whatsapp_body">  
         < Sidebar />
-        < Chats />
+        < Chats messages={messages}/>
       </div>
 
     </div>
