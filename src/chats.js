@@ -78,7 +78,7 @@ function Chats() {
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
                 </p>
 
-                <p className="mainChat_sentmessage">
+                <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
@@ -90,7 +90,7 @@ function Chats() {
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
                 </p>
 
-                <p className="mainChat_sentmessage">
+                <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
