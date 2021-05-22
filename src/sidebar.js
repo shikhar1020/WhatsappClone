@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "./sidebar.css"
 import IndivudialContacts from "./indivudialContacts"
 
@@ -10,7 +10,25 @@ import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 
 import SearchIcon from '@material-ui/icons/Search';
 
+import db from "./firebase";
+
 function Sidebar() {
+
+    const [rooms, setRooms] = useState([]);
+
+    useEffect(() => {
+        db.collection('Rooms').onSnapshot((snapshot) =>
+                setRooms(snapshot.docs.map( (doc) => ({
+                        id: doc.id,
+                        data: doc.data(),
+                    }))
+                )
+            );
+    }, []);
+
+    console.log("Rooms", rooms);
+
+
     return (
         <div className="sidebar">
             <div className="sidebar_header">
@@ -36,13 +54,18 @@ function Sidebar() {
             </div>
 
             <div className="contactsList">
+                {/* https://stackoverflow.com/questions/62653450/how-to-fix-expected-to-return-a-value-in-arrow-function-with-reactjs */}
+                {rooms.map(room => (
+                    <>
+                    <IndivudialContacts key={room.id} id={room.id} name={room.data.name} />
+                    </>
+                ))}
+                {/* <IndivudialContacts />
                 <IndivudialContacts />
                 <IndivudialContacts />
                 <IndivudialContacts />
                 <IndivudialContacts />
-                <IndivudialContacts />
-                <IndivudialContacts />
-                <IndivudialContacts />
+                <IndivudialContacts /> */}
             </div>
             
         </div>

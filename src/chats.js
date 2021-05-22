@@ -17,13 +17,16 @@ import SendIcon from '@material-ui/icons/Send';
 function Chats({ messages }) {
 
     const [input, setInput] = useState("");
+    var current = new Date();
+    const currentTime = current.toLocaleTimeString();
+    // console.log("Current time is ", currentTime);
     const sendMessage = async(e) => {
         e.preventDefault();
 
         await axios.post("/messages/new",  {
             "message" : input,
             "name" : "Shikhar Sangam",
-            "timestamp" : "Just Now",
+            "timestamp" : currentTime,
             "received" : false
         });
 
