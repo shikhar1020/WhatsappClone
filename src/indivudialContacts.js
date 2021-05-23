@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "./indivudialContacts.css"
 import {
     BrowserRouter as Router,
@@ -6,11 +6,13 @@ import {
     Route,
     Link
   } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import {Avatar} from '@material-ui/core';
 import db from './firebase';
 
 function IndivudialContacts({id, name, addNew}) {
+
+    const [lastmessage, setLastMessage] = useState("");
     const createRoom = () => {
         const roomName = prompt("Please Enter New Chat Room");
 
@@ -22,22 +24,42 @@ function IndivudialContacts({id, name, addNew}) {
         }
     };
 
+    const [seed, setSeed] = useState("");
+    const {roomId} = useParams();
+    useEffect(() => {
+        setSeed(Math.floor(Math.random() * 5000));
+    }, [])
+
+    useEffect(() => {
+        if(id) {
+            db.collection("Rooms")
+            .doc(id)
+            .collection("messages")
+            .orderBy('timestamp', 'desc')
+            .onSnapshot((snapshot) => 
+                setLastMessage(snapshot.docs.map((doc) => 
+                doc.data()))
+            );
+        }
+    }, [])
+
     return !addNew ? (
         <Link to={`/rooms/${id}`}>
         <div className="IndivudialContacts">
         <>
-        <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
+        <Avatar alt={name} src={`https://avatars.dicebear.com/api/avataaars/${seed}.svg`} />
             <div className="IndivudialContacts_info">
                 <h4>{name}</h4>
-                <p>Wooho! This is so amazing!</p>
+                <p>{lastmessage[0]?.message}</p>
                 
             </div>
         </>
         </div>
         </Link>
     ) : (
-        <div className="IndivudialContacts" onClick={createRoom}>
-            <h4 >Add New Chat</h4>
+        <div onClick={createRoom}>
+            {/* <h4 >Add New Chat</h4> */}
+            <button className="addNew" >Add New Chat +</button>
         </div>
     )
 

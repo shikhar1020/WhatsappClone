@@ -19,3 +19,51 @@
 .IndivudialContacts_info{
     margin-left: 15px;
 }
+
+a{
+    text-decoration: none !important;
+    color: black;
+}
+
+.addNew {
+    /* display:flex; */
+    /* margin-left: auto;
+    margin-right:auto; */
+    text-align: center;
+    border-radius: 7px;
+    background-color: #04AA6B;
+    border: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 900;
+    padding: 15px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+    /* border: 2px solid darkgreen; */
+  }
+  
+  .addNew span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .addNew span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .addNew:hover span {
+    padding-right: 25px;
+  }
+  
+  .addNew:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
