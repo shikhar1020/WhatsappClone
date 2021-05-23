@@ -4,7 +4,6 @@ import axios from "./axios";
 import './App.css';
 
 import Sidebar from "./sidebar"
-import Chats from "./chats"
 import Login from "./Login"
 
 import {
@@ -13,6 +12,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+// import Chats from "./chats"
+import Chats from "./chatsmern"
 
 import {useStateValue} from "./StateProvider";
 import {actionTypes} from "./Reducer";
@@ -72,23 +74,40 @@ function App() {
           <Login />
         ) : (
           <>
-          < Sidebar />
-          < Chats messages={messages}/>
+          {/* < Sidebar />
+          < Chats messages={messages}/> */}
+          {/* For Loading Firebase Data */}
+          {/* <Router>
+            <Switch>
+                <Route path="/rooms/:roomId">
+                < Sidebar />
+                  < Chats />
+                </Route>
+                <Route path="/">
+                  < Sidebar />
+                  < Chats />
+                </Route>
+            </Switch>
+          </Router> */}
+
+          {/* For Loading Mongo Data*/}
+          <Router>
+            <Switch>
+                <Route path="/rooms/:roomId">
+                < Sidebar />
+                  < Chats messages={messages} />
+                </Route>
+                <Route path="/">
+                  < Sidebar />
+                  < Chats messages={messages}/>
+                </Route>
+            </Switch>
+          </Router>
         </>
         )
       }
 
-        {/* <Router>
-          <Switch>
-            < Sidebar />
-              <Route path="/rooms/:roomId">
-                < Chats messages={messages}/>
-              </Route>
-              <Route path="/">
-                < Chats messages={messages}/>
-              </Route>
-          </Switch>
-        </Router> */}
+        
       </>
       </div>
     </div>

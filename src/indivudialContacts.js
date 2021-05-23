@@ -23,7 +23,7 @@ function IndivudialContacts({id, name, addNew}) {
     };
 
     return !addNew ? (
-        // <Link to={`/rooms/${id}`}>
+        <Link to={`/rooms/${id}`}>
         <div className="IndivudialContacts">
         <>
         <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
@@ -34,7 +34,7 @@ function IndivudialContacts({id, name, addNew}) {
             </div>
         </>
         </div>
-        // </Link>
+        </Link>
     ) : (
         <div className="IndivudialContacts" onClick={createRoom}>
             <h4 >Add New Chat</h4>

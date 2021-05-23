@@ -18,31 +18,39 @@ import {useStateValue} from "./StateProvider";
 
 
 
-function Chats() {
+function Chats({ messages }) {
 
     const [{user}, dispatch] = useStateValue();
-    // const {roomId} = useParams();
-    // const [roomName, setRoomName] = useState("");
+    const {roomId} = useParams();
+    const [roomName, setRoomName] = useState("");
 
-    // useEffect(() => {
-    //     if(roomId){
-    //         db.collection('Rooms').doc(roomId).
-    //         onSnapshot(snapshot => (
-    //             setRoomName(snapshot.data().name)
-    //         ))
-    //     }
-    // }, [roomId])
+    useEffect(() => {
+        if(roomId){
+            db.collection('Rooms').doc(roomId).
+            onSnapshot(snapshot => (
+                setRoomName(snapshot.data().name)
+            ))
+        }
+    }, [roomId])
 
     const [input, setInput] = useState("");
     var current = new Date();
     const currentTime = current.toLocaleTimeString();
+    // console.log("Current time is ", currentTime);
 
-    const sendMessage = () => {
-        console.log("Yeeeeee");
 
+    const sendMessage = async(e) => {
+        e.preventDefault();
+
+        await axios.post("/messages/new",  {
+            "message" : input,
+            "name" : user.displayName,
+            "timestamp" : currentTime,
+            "received" : false
+        });
 
         setInput("");
-    }
+    };
 
 
     return (
@@ -50,7 +58,7 @@ function Chats() {
             <div className="chats_header">
             <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
                 <div className="chatHeader_info">
-                    <h3>New Room</h3>
+                    <h3>{roomName}</h3>
                     <p>last seen at 18:32</p>
                 </div>
                 <div className="chats_headerRight">
@@ -67,20 +75,20 @@ function Chats() {
             </div>
 
             <div className="mainChat">
-                {/* {messages.map((message) => (
+                {messages.map((message) => (
                     <p className={`mainChat_sentmessage ${message.received && "mainChat_receivedmessage"}`}>
                         <span className="chat_name">{message.name}</span>
                         {message.message}
                         <span className="chat_timestamp">{message.timestamp}</span>            
                     </p>
-                ))} */}
+                ))}
 
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
+                {/* <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
                 </p>
-               
+                */}
 
             </div>
 
