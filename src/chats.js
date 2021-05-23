@@ -14,10 +14,13 @@ import MicIcon from '@material-ui/icons/Mic';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import SendIcon from '@material-ui/icons/Send';
 
+import {useStateValue} from "./StateProvider";
+
 
 
 function Chats({ messages }) {
 
+    const [{user}, dispatch] = useStateValue();
     // const {roomId} = useParams();
     // const [roomName, setRoomName] = useState("");
 
@@ -39,7 +42,7 @@ function Chats({ messages }) {
 
         await axios.post("/messages/new",  {
             "message" : input,
-            "name" : "Shikhar Sangam",
+            "name" : user.displayName,
             "timestamp" : currentTime,
             "received" : false
         });
