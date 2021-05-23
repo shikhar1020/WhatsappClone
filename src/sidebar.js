@@ -17,13 +17,17 @@ function Sidebar() {
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        db.collection('Rooms').onSnapshot((snapshot) =>
-                setRooms(snapshot.docs.map( (doc) => ({
-                        id: doc.id,
-                        data: doc.data(),
-                    }))
-                )
-            );
+        const usnsubscribe = db.collection('Rooms').onSnapshot((snapshot) =>
+            setRooms(snapshot.docs.map( (doc) => ({
+                    id: doc.id,
+                    data: doc.data(),
+                }))
+            )
+        );
+
+        return () => {
+            usnsubscribe();
+        }
     }, []);
 
     console.log("Rooms", rooms);

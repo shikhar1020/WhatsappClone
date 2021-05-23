@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     flex: 0.35;
-    /*border: 1px solid rgb(228, 224, 224);*/
+    /* border: 1px solid green; */
 }
 
 .sidebar_header{
@@ -73,5 +73,24 @@
     background-color: white;
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT5ZfavDGRDmWtnTok6Pdg4hs1JDTV_gMk6Iw&usqp=CAU");
     overflow: auto;
-    /*border: 1px solid rgb(37, 138, 16);*/        
+    /* border: 1px solid rgb(37, 138, 16);         */
 }
+
+.contactsList::-webkit-scrollbar {
+    width: 3px;
+  }
+
+.contactsList::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+
+.contactsList::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+
+.contactsList::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+

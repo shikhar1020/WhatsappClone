@@ -5,6 +5,7 @@ import './App.css';
 
 import Sidebar from "./sidebar"
 import Chats from "./chats"
+import Login from "./Login"
 
 import {
   BrowserRouter as Router,
@@ -15,6 +16,16 @@ import {
 
 function App() {
   const [messages, setMessages] = useState([]);
+  const [user, setUser] = useState(null);
+
+  // setUser({
+  //   "name": "Sangam"
+  // })
+
+  // useEffect(() => {
+  //   setUser({
+  //   })
+  // }, [user])
 
   useEffect(() => {
     axios.get('/messages/sync')
@@ -51,9 +62,18 @@ function App() {
     <div className="app">
       <div className="whatsapp_body">  
       <>
-        {/* < Sidebar />
-        < Chats messages={messages}/> */}
-        <Router>
+      {
+        !user ? (
+          <Login />
+        ) : (
+          <>
+          < Sidebar />
+          < Chats messages={messages}/>
+        </>
+        )
+      }
+
+        {/* <Router>
           <Switch>
             < Sidebar />
               <Route path="/rooms/:roomId">
@@ -63,7 +83,7 @@ function App() {
                 < Chats messages={messages}/>
               </Route>
           </Switch>
-        </Router>
+        </Router> */}
       </>
       </div>
     </div>

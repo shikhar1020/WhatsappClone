@@ -62,6 +62,23 @@
     /*border: 1px solid rgb(202, 199, 10);*/
 }
 
+
+.mainChat::-webkit-scrollbar {
+    width: 3px;
+  }
+
+.mainChat::-webkit-scrollbar-track {
+    background: white; 
+  }
+
+.mainChat::-webkit-scrollbar-thumb {
+    background: darkblue; 
+  }
+
+.mainChat::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
 .mainChat_sentmessage{
     position: relative;
     font-size: 16px;
