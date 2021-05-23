@@ -54,6 +54,7 @@ function Sidebar() {
             </div>
 
             <div className="contactsList">
+            <IndivudialContacts addNew/>
                 {/* https://stackoverflow.com/questions/62653450/how-to-fix-expected-to-return-a-value-in-arrow-function-with-reactjs */}
                 {rooms.map(room => (
                     <>
