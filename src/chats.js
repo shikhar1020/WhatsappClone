@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from "./axios";
+import { useParams } from "react-router-dom";
 import "./chats.css"
+import db from "./firebase"
 
 import {Avatar, IconButton} from '@material-ui/core';
 
@@ -15,6 +17,18 @@ import SendIcon from '@material-ui/icons/Send';
 
 
 function Chats({ messages }) {
+
+    const {roomId} = useParams();
+    const [roomName, setRoomName] = useState("");
+
+    useEffect(() => {
+        if(roomId){
+            db.collection('Rooms').doc(roomId).
+            onSnapshot(snapshot => (
+                setRoomName(snapshot.data().name)
+            ))
+        }
+    }, [roomId])
 
     const [input, setInput] = useState("");
     var current = new Date();
@@ -39,7 +53,7 @@ function Chats({ messages }) {
             <div className="chats_header">
             <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
                 <div className="chatHeader_info">
-                    <h3>Shikhar Sangam</h3>
+                    <h3>{roomName}</h3>
                     <p>last seen at 18:32</p>
                 </div>
                 <div className="chats_headerRight">
@@ -64,73 +78,12 @@ function Chats({ messages }) {
                     </p>
                 ))}
 
-                
-
                 {/* <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
                 </p>
-
-                <p className="mainChat_sentmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage ">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-                
-                <p className="mainChat_sentmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
-
-                <p className="mainChat_sentmessage">
-                    <span className="chat_name">Sangam</span>
-                    Tujhe yaad karke, mujhe chain aawe...
-                    <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p> */}
+                */}
 
             </div>
 
@@ -154,11 +107,11 @@ function Chats({ messages }) {
                         </IconButton>      
                     </div>
                     <IconButton>
-                        <SendIcon onClick={sendMessage}/>
-                    </IconButton>
-                    <IconButton>
                         <MicIcon/>
-                    </IconButton>                                                                                              
+                    </IconButton>   
+                    <IconButton>
+                        <SendIcon onClick={sendMessage}/>
+                    </IconButton>                                                                                           
             </div> 
             </form>       
         </div>

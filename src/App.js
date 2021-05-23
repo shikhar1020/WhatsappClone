@@ -6,6 +6,13 @@ import './App.css';
 import Sidebar from "./sidebar"
 import Chats from "./chats"
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 function App() {
   const [messages, setMessages] = useState([]);
 
@@ -43,10 +50,22 @@ function App() {
   return (
     <div className="app">
       <div className="whatsapp_body">  
-        < Sidebar />
-        < Chats messages={messages}/>
+      <>
+        {/* < Sidebar />
+        < Chats messages={messages}/> */}
+        <Router>
+          <Switch>
+            < Sidebar />
+              <Route path="/rooms/:roomId">
+                < Chats messages={messages}/>
+              </Route>
+              <Route path="/">
+                < Chats messages={messages}/>
+              </Route>
+          </Switch>
+        </Router>
+      </>
       </div>
-
     </div>
   );
 }

@@ -1,5 +1,11 @@
 import React from 'react'
 import "./indivudialContacts.css"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
 import {Avatar} from '@material-ui/core';
 import db from './firebase';
@@ -16,9 +22,9 @@ function IndivudialContacts({id, name, addNew}) {
         }
     };
 
-    return <div
-    className="IndivudialContacts">
-        {!addNew &&
+    return !addNew ? (
+        <Link to={`/rooms/${id}`}>
+        <div className="IndivudialContacts">
         <>
         <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
             <div className="IndivudialContacts_info">
@@ -27,14 +33,16 @@ function IndivudialContacts({id, name, addNew}) {
                 
             </div>
         </>
-        }
-        {addNew && 
-            <div onClick={createRoom}>
-                <h4 >Add New Chat</h4>
-            </div>
-        }
+        </div>
+        </Link>
+    ) : (
+        <div className="IndivudialContacts" onClick={createRoom}>
+            <h4 >Add New Chat</h4>
+        </div>
+    )
+
         
-    </div>
+
 
 }
 
