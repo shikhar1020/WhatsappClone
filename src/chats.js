@@ -53,7 +53,8 @@ function Chats() {
         setSeed(Math.floor(Math.random() * 5000));
     }, [roomId])
 
-    const sendMessage = () => {
+    const sendMessage = (e) => {
+        e.preventDefault();
 
         db.collection("Rooms").doc(roomId).collection("messages").add({
             message: input,
@@ -69,7 +70,7 @@ function Chats() {
     return (
         <div className="chats">
             <div className="chats_header">
-            <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
+            <Avatar alt="Shikhar Sangam" src="https://avatars.githubusercontent.com/u/54438024?v=4" />
                 <div className="chatHeader_info">
                     <h3>{roomName}</h3>
                     <p>last seen at {new Date(messages[messages.length-1]?.timestamp?.toDate()
@@ -129,7 +130,7 @@ function Chats() {
                         <MicIcon/>
                     </IconButton>   
                     <IconButton>
-                        <SendIcon onClick={sendMessage}/>
+                        <SendIcon type="submit" onClick={sendMessage}/>
                     </IconButton>                                                                                           
             </div> 
             </form>       
