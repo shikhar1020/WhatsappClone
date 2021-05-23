@@ -14,9 +14,14 @@ import {
   Link
 } from "react-router-dom";
 
+import {useStateValue} from "./StateProvider";
+import {actionTypes} from "./Reducer";
+
 function App() {
   const [messages, setMessages] = useState([]);
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+
+  const [{user}, dispatch] = useStateValue();
 
   // setUser({
   //   "name": "Sangam"
