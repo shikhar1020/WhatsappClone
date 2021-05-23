@@ -13,8 +13,8 @@ import {
   Link
 } from "react-router-dom";
 
-// import Chats from "./chats"
-import Chats from "./chatsmern"
+import Chats from "./chats"
+// import Chats from "./chatsmern"
 
 import {useStateValue} from "./StateProvider";
 import {actionTypes} from "./Reducer";
@@ -76,8 +76,10 @@ function App() {
           <>
           {/* < Sidebar />
           < Chats messages={messages}/> */}
+
+
           {/* For Loading Firebase Data */}
-          {/* <Router>
+          <Router>
             <Switch>
                 <Route path="/rooms/:roomId">
                 < Sidebar />
@@ -88,10 +90,10 @@ function App() {
                   < Chats />
                 </Route>
             </Switch>
-          </Router> */}
+          </Router>
 
           {/* For Loading Mongo Data*/}
-          <Router>
+          {/* <Router>
             <Switch>
                 <Route path="/rooms/:roomId">
                 < Sidebar />
@@ -102,7 +104,7 @@ function App() {
                   < Chats messages={messages}/>
                 </Route>
             </Switch>
-          </Router>
+          </Router> */}
         </>
         )
       }

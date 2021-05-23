@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react'
 import axios from "./axios";
 import { useParams } from "react-router-dom";
 import "./chats.css"
-import db from "./firebase"
+import db from "./firebase";
+import firebase from "firebase";
 
 import {Avatar, IconButton} from '@material-ui/core';
 
@@ -21,25 +22,45 @@ import {useStateValue} from "./StateProvider";
 function Chats() {
 
     const [{user}, dispatch] = useStateValue();
-    // const {roomId} = useParams();
-    // const [roomName, setRoomName] = useState("");
+    const {roomId} = useParams();
+    const [roomName, setRoomName] = useState("");
+    const[messages, setMessages] = useState([]);
+    const [sentMessgae, setSentMessage] = useState(false)
+    const [seed, setSeed] = useState("");
 
-    // useEffect(() => {
-    //     if(roomId){
-    //         db.collection('Rooms').doc(roomId).
-    //         onSnapshot(snapshot => (
-    //             setRoomName(snapshot.data().name)
-    //         ))
-    //     }
-    // }, [roomId])
+    useEffect(() => {
+        if(roomId){
+            db.collection('Rooms')
+            .doc(roomId)
+            .onSnapshot((snapshot) => setRoomName
+            (snapshot.data().name));
+
+            db.collection("Rooms").doc(roomId)
+            .collection("messages")
+            .orderBy("timestamp", "asc")
+            .onSnapshot(snapshot => setMessages(snapshot.docs.map(doc => doc.data())))
+        }
+
+        console.log("Message is", messages);
+
+    }, [roomId])
 
     const [input, setInput] = useState("");
     var current = new Date();
     const currentTime = current.toLocaleTimeString();
 
-    const sendMessage = () => {
-        console.log("Yeeeeee");
+    useEffect(() => {
+        setSeed(Math.floor(Math.random() * 5000));
+    }, [roomId])
 
+    const sendMessage = () => {
+
+        db.collection("Rooms").doc(roomId).collection("messages").add({
+            message: input,
+            name: user.displayName,
+            timestamp:  firebase.firestore.FieldValue.serverTimestamp(),
+        });
+        console.log("Message sent", input);
 
         setInput("");
     }
@@ -50,7 +71,7 @@ function Chats() {
             <div className="chats_header">
             <Avatar alt="Shikhar Sangam" src="https://avatars1.githubusercontent.com/u/54438024?s=460&u=6312f0e7142c4ed394a8fb9a4254cba4325c9fe7&v=4" />
                 <div className="chatHeader_info">
-                    <h3>New Room</h3>
+                    <h3>{roomName}</h3>
                     <p>last seen at 18:32</p>
                 </div>
                 <div className="chats_headerRight">
@@ -67,13 +88,13 @@ function Chats() {
             </div>
 
             <div className="mainChat">
-                {/* {messages.map((message) => (
-                    <p className={`mainChat_sentmessage ${message.received && "mainChat_receivedmessage"}`}>
+                {messages.map((message) => (
+                    <p className={`mainChat_sentmessage ${sentMessgae && "mainChat_receivedmessage"}`}>
                         <span className="chat_name">{message.name}</span>
                         {message.message}
-                        <span className="chat_timestamp">{message.timestamp}</span>            
+                        <span className="chat_timestamp">{new Date(message.timestamp?.toDate()).toUTCString()}</span>            
                     </p>
-                ))} */}
+                ))}
 
                 <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
