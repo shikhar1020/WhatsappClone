@@ -25,7 +25,7 @@ function Chats() {
     const {roomId} = useParams();
     const [roomName, setRoomName] = useState("");
     const[messages, setMessages] = useState([]);
-    const [sentMessgae, setSentMessage] = useState(false)
+    const [sentMessgae, setSentMessage] = useState(true)
     const [seed, setSeed] = useState("");
 
     useEffect(() => {
@@ -89,18 +89,18 @@ function Chats() {
 
             <div className="mainChat">
                 {messages.map((message) => (
-                    <p className={`mainChat_sentmessage ${sentMessgae && "mainChat_receivedmessage"}`}>
+                    <p className={`mainChat_sentmessage ${message.name === user.displayName && "mainChat_receivedmessage"}`}>
                         <span className="chat_name">{message.name}</span>
                         {message.message}
                         <span className="chat_timestamp">{new Date(message.timestamp?.toDate()).toUTCString()}</span>            
                     </p>
                 ))}
 
-                <p className="mainChat_sentmessage mainChat_receivedmessage">
+                {/* <p className="mainChat_sentmessage mainChat_receivedmessage">
                     <span className="chat_name">Sangam</span>
                     Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...Tujhe yaad karke, mujhe chain aawe...
                     <span className="chat_timestamp">{new Date().toLocaleTimeString()}</span>            
-                </p>
+                </p> */}
                
 
             </div>
