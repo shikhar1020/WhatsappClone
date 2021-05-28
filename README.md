@@ -1,4 +1,4 @@
-To visit the live site visit  [WhatsApp Clone](https://whatsappclonemern-7b264.web.app/) built with [React Js](https://reactjs.org/) and [Firebase](https://firebase.google.com/). 🎨
+To visit the live site visit [WhatsApp Clone](https://whatsappclonemern-7b264.web.app/)🚀 built with [React Js](https://reactjs.org/) and [Firebase](https://firebase.google.com/). 🎨
 
 
 ## **Preview**
